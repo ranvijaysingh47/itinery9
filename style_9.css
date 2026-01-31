@@ -1,0 +1,591 @@
+:root {
+    --color-charcoal: #121212;
+    --color-teal: #004d40;
+    --color-green: #1b5e20;
+    --color-ivory: #fffff0;
+    --color-gold: #d4af37;
+    --color-white: #ffffff;
+    --color-gray-light: #f5f5f5;
+
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Lato', sans-serif;
+
+    --grid-gap: 20px;
+    --border-radius: 4px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-charcoal);
+    background-color: #E5E5E5;
+    /* Workspace background */
+}
+
+/* --- PAGE LAYOUT (A4 Ratio-ish Web) --- */
+.page {
+    width: 100%;
+    max-width: 1400px;
+    /* Wide screen format */
+    min-height: 100vh;
+    background-color: var(--color-ivory);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.bg-alt {
+    background-color: var(--color-white);
+}
+
+/* --- GRID SYSTEM --- */
+.container-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gap);
+    padding: 3rem 4rem;
+    height: 100%;
+    align-content: start;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.col-3 {
+    grid-column: span 3;
+}
+
+.col-6 {
+    grid-column: span 6;
+}
+
+.col-9 {
+    grid-column: span 9;
+}
+
+.col-12 {
+    grid-column: span 12;
+}
+
+/* --- TYPOGRAPHY --- */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+p {
+    line-height: 1.6;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* --- COVER PAGE --- */
+.cover-page {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.hero-image-container {
+    height: 65vh;
+    position: relative;
+    width: 100%;
+}
+
+.cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, var(--color-ivory));
+}
+
+.cover-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 0;
+}
+
+.brand-mark {
+    color: var(--color-gold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    margin-bottom: 2rem;
+}
+
+.brand-logo {
+    height: 200px;
+    width: auto;
+    /* Filter to match Gold #d4af37 */
+    filter: brightness(0) saturate(100%) invert(67%) sepia(69%) saturate(432%) hue-rotate(359deg) brightness(92%) contrast(89%);
+}
+
+.title-block h1 {
+    font-size: 8rem;
+    line-height: 0.8;
+    color: var(--color-teal);
+    font-weight: 400;
+}
+
+.title-block h2 {
+    font-size: 1.5rem;
+    letter-spacing: 12px;
+    color: var(--color-charcoal);
+    font-weight: 300;
+    margin-top: 1rem;
+}
+
+.trip-meta {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 2rem;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.meta-line {
+    width: 100px;
+    height: 1px;
+    background-color: var(--color-gold);
+}
+
+/* --- OVERVIEW PAGE --- */
+.page-header {
+    padding-bottom: 1rem;
+}
+
+.page-header h3 {
+    font-size: 2rem;
+    color: var(--color-teal);
+}
+
+.divider-shape-mini {
+    width: 50px;
+    height: 3px;
+    background-color: var(--color-gold);
+    margin: 1rem auto 0;
+}
+
+.overview-grid {
+    align-items: center;
+}
+
+.summary-text h4 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    color: var(--color-charcoal);
+}
+
+.summary-text p {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    max-width: 90%;
+}
+
+.inclusions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.inc-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.inc-item i {
+    font-size: 1.5rem;
+    color: var(--color-gold);
+}
+
+.inc-item span {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.mini-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.mini-gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    filter: grayscale(20%);
+    transition: filter 0.3s;
+}
+
+.mini-gallery img:hover {
+    filter: grayscale(0%);
+}
+
+.footer-line {
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    margin-top: 2rem;
+}
+
+/* --- DAY PAGES --- */
+.sidebar-col {
+    border-right: 1px solid #eee;
+    padding-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    height: 90vh;
+    /* Keep it structured */
+}
+
+.day-indicator {
+    margin-bottom: 4rem;
+}
+
+.day-word {
+    display: block;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    color: var(--color-gold);
+}
+
+.day-num {
+    display: block;
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-teal);
+}
+
+.timeline-bar {
+    flex-grow: 1;
+    width: 2px;
+    background: transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: -1px;
+    /* Align with border */
+}
+
+.timeline-bar .line {
+    width: 1px;
+    flex-grow: 1;
+    background-image: linear-gradient(to bottom, #ccc 50%, transparent 50%);
+    background-size: 1px 10px;
+    background-repeat: repeat-y;
+}
+
+.timeline-bar .dot {
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-gold);
+    border-radius: 50%;
+    margin: 1rem 0;
+}
+
+.timeline-bar .dot.finish {
+    background-color: var(--color-teal);
+}
+
+.day-route {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+}
+
+.day-route i {
+    color: var(--color-gold);
+    font-size: 1rem;
+}
+
+.content-col {
+    padding-left: 2rem;
+}
+
+.day-header {
+    margin-bottom: 3rem;
+}
+
+.day-header h3 {
+    font-size: 3.5rem;
+    color: var(--color-charcoal);
+    font-weight: 300;
+    line-height: 1.1;
+}
+
+.day-header .subtitle {
+    font-family: var(--font-body);
+    font-style: italic;
+    color: var(--color-teal);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.day-desc {
+    max-width: 600px;
+    font-size: 1.05rem;
+    color: #666;
+    line-height: 1.6;
+    border-left: 3px solid var(--color-gold);
+    padding-left: 1rem;
+}
+
+.locations-row {
+    display: flex;
+    gap: 2rem;
+}
+
+.loc-block {
+    flex: 1;
+}
+
+.loc-block.large {
+    flex: 2;
+}
+
+.loc-stack {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.img-frame {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.rounded-frame {
+    border-radius: var(--border-radius);
+}
+
+.img-frame img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.loc-block.large .img-frame img {
+    height: 620px;
+}
+
+.loc-block.small .img-frame img {
+    height: 250px;
+}
+
+.locations-grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.locations-grid-2x2 .img-frame img {
+    height: 250px;
+}
+
+.loc-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-teal);
+    color: var(--color-white);
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: var(--font-heading);
+}
+
+.loc-badge.gold {
+    background-color: var(--color-gold);
+    color: var(--color-charcoal);
+}
+
+.loc-badge i {
+    margin-right: 5px;
+}
+
+.loc-block h4 {
+    font-size: 1.2rem;
+    color: var(--color-charcoal);
+    border-left: 2px solid var(--color-gold);
+    padding-left: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .container-grid {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    .col-3,
+    .col-6,
+    .col-9,
+    .col-12 {
+        width: 100%;
+    }
+
+    .sidebar-col {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+        align-items: flex-start;
+        text-align: left;
+        height: auto;
+    }
+
+    .timeline-bar {
+        display: none;
+    }
+
+    .locations-row {
+        flex-direction: column;
+    }
+
+    .title-block h1 {
+        font-size: 4rem;
+    }
+
+    .mini-gallery img {
+        height: 150px;
+    }
+}
+
+/* --- FOOTER PAGE --- */
+.footer-page {
+    /* Background Image with Dark Overlay for readability */
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('images/laitlum_canyon_1769777316223.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Parallax effect */
+    color: var(--color-ivory);
+    min-height: 50vh;
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Essential for horizontal centering */
+}
+
+.footer-flex-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    width: 100%;
+    /* Ensures it takes full width for centering */
+}
+
+.footer-logo {
+    height: 160px;
+    width: auto;
+    margin-bottom: 2rem;
+    filter: brightness(0) saturate(100%) invert(67%) sepia(69%) saturate(432%) hue-rotate(359deg) brightness(92%) contrast(89%);
+}
+
+.company-desc {
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    color: #bbb;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.contact-details {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    transition: background 0.3s;
+}
+
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.contact-item i {
+    color: var(--color-gold);
+    font-size: 1.4rem;
+}
+
+.footer-decor {
+    display: flex;
+    justify-content: center;
+    /* Ensures the text and lines are perfectly centered */
+    align-items: center;
+    gap: 1.5rem;
+    opacity: 0.6;
+    font-family: var(--font-heading);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.footer-decor .line {
+    width: 60px;
+    height: 1px;
+    background-color: var(--color-gold);
+}
